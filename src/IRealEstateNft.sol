@@ -17,7 +17,7 @@ interface IRealEstateNFT is IERC721Metadata {
         bytes32 legalDocumentHash;
         uint256 longitude;
         uint256 latitude;
-        uint256 squereMeters;
+        uint256 squareMeters;
         bool verified;
         address verifier;
     }
@@ -49,7 +49,7 @@ interface IRealEstateNFT is IERC721Metadata {
         bytes32 legalDocumentHash,
         uint256 longitude,
         uint256 latitude,
-        uint256 squereMeters,
+        uint256 squareMeters,
         bool verified,
         address verifier
     );
@@ -70,7 +70,7 @@ interface IRealEstateNFT is IERC721Metadata {
      * @param _legalDocumentHash Hash of the legal document proving ownership
      * @param _longitude Geographic longitude of the property
      * @param _latitude Geographic latitude of the property
-     * @param _squereMeters Size of the property in square meters
+     * @param _squareMeters Size of the property in square meters
      * @return The ID of the newly minted token
      */
     function mint(
@@ -80,7 +80,7 @@ interface IRealEstateNFT is IERC721Metadata {
         bytes32 _legalDocumentHash,
         uint256 _longitude,
         uint256 _latitude,
-        uint256 _squereMeters
+        uint256 _squareMeters
     ) external returns (uint256);
 
     /**
@@ -98,7 +98,7 @@ interface IRealEstateNFT is IERC721Metadata {
      * @param _legalDocumentHash Updated hash of the legal document proving ownership
      * @param _longitude Updated geographic longitude of the property
      * @param _latitude Updated geographic latitude of the property
-     * @param _squereMeters Updated size of the property in square meters
+     * @param _squareMeters Updated size of the property in square meters
      */
     function updateMetadata(
         uint256 _tokenId,
@@ -107,7 +107,7 @@ interface IRealEstateNFT is IERC721Metadata {
         bytes32 _legalDocumentHash,
         uint256 _longitude,
         uint256 _latitude,
-        uint256 _squereMeters
+        uint256 _squareMeters
     ) external;
 
     /**

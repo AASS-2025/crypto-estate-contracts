@@ -13,7 +13,7 @@ contract RealEstateNFT is ERC721URIStorage {
         bytes32 legalDocumentHash;
         uint256 longitude;
         uint256 latitude;
-        uint256 squereMeters;
+        uint256 sqareMeters;
         bool verified;
         address verifier;
     }
@@ -42,7 +42,7 @@ contract RealEstateNFT is ERC721URIStorage {
         bytes32 _legalDocumentHash,
         uint256 _longitude,
         uint256 _latitude,
-        uint256 _squereMeters
+        uint256 _squareMeters
     ) public returns (uint256) {
         tokenCounter++;
         _safeMint(msg.sender, tokenCounter);
@@ -53,7 +53,7 @@ contract RealEstateNFT is ERC721URIStorage {
             _legalDocumentHash,
             _longitude,
             _latitude,
-            _squereMeters,
+            _squareMeters,
             false,
             address(0)
         );
