@@ -2,9 +2,10 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "./IRealEstateNft.sol";
 
-contract RealEstateNFT is ERC721URIStorage {
+contract RealEstateNFT is ERC721URIStorage, Ownable {
 
     uint256 public tokenCounter;
     struct PropertyMetadata {
@@ -13,7 +14,7 @@ contract RealEstateNFT is ERC721URIStorage {
         bytes32 legalDocumentHash;
         uint256 longitude;
         uint256 latitude;
-        uint256 sqareMeters;
+        uint256 squareMeters;
         bool verified;
         address verifier;
     }
@@ -27,7 +28,7 @@ contract RealEstateNFT is ERC721URIStorage {
     mapping(uint256 => VerificationRequest) public verificationRequests;
     event VerificationRequestCreated(uint256 tokenId, address verifier, uint256 price);
 
-    constructor() ERC721("RealEstateNFT", "RENFT") {
+    constructor() ERC721("RealEstateNFT", "RENFT") Ownable(msg.sender) {
         tokenCounter = 0;
     }
 
@@ -76,7 +77,7 @@ contract RealEstateNFT is ERC721URIStorage {
         bytes32 _legalDocumentHash,
         uint256 _longitude,
         uint256 _latitude,
-        uint256 _squereMeters
+        uint256 _squareMeters
     ) public {
         _requireOwned(_tokenId);
         propertyMetadata[_tokenId] = PropertyMetadata(
@@ -85,11 +86,15 @@ contract RealEstateNFT is ERC721URIStorage {
             _legalDocumentHash,
             _longitude,
             _latitude,
-            _squereMeters,
+            _squareMeters,
             false,
             address(0)
         );
         emit MetadataUpdate(_tokenId);
+    }
+
+    function setTokenURI(uint256 _tokenId, string memory _tokenURI) public onlyOwner {
+
     }
 
     function verify(uint256 _tokenId) public {

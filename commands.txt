@@ -1,0 +1,12 @@
+forge create --rpc-url $ETH_SEPOLIA_RPC \
+    --private-key $PRIVATE_KEY \
+    --etherscan-api-key $ETHERSCAN_API_KEY \
+    --verify \
+    src/RealEstateNFT.sol:RealEstateNFT
+
+
+    forge create --rpc-url $ETH_SEPOLIA_RPC \
+    --private-key $PRIVATE_KEY \
+    --etherscan-api-key $ETHERSCAN_API_KEY \
+    --verify \
+    src/RealEstateMarket.sol:RealEstateMarket
